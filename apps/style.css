@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    padding: max(100px,5vw) 0 0vw;
+    font-family: sans-serif;
+    font-size: 62.5%;
+    background-color: #2a2a2a;
+}
+
+h1 {
+    font-size: min(max(1.8rem, 5vw), 4.4rem);
+    text-align: center;
+    color: white;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max(75%, 300px);
+    margin: max(50px,5vw) auto 0;
+    padding: 1vw 8vw 0;
+    border-radius: 3vw;
+    font-size: min(max(1rem, 2vw), 1.6rem);
+    color: white;
+}
+
+#currencyInputName {
+    margin: 1vw 2vw; 
+}
+
+#currencyInput {
+    width: 50vw;
+    font-size: min(max(1.2rem, 5vw), 2rem);
+    margin-bottom: 1vw;
+    padding: .5vw 2vw;
+}
+
+
+.card {
+    width: 50vw;
+    margin-top: 2vw;
+    padding: 2vh 2vw;
+}
+
+.card__1 {
+    background-color: #2a2a9f;
+}
+.card__2 {
+    background-color: #9f2a2a;
+}
+.card__3 {
+    background-color: #2a9f2a;
+}
+
+.output {
+    margin-top: .4rem;
+}

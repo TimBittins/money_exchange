@@ -1,13 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eXchange App</title>
+    <link rel="stylesheet" href="apps/style.css">
+    <link rel="icon" type="image/ico" href="img/tb_favicon.ico">
 </head>
 <body>
-    
+    <h1>Geldwechsel App</h1>
+
+    <div class="container">
+        <form>
+            <h3 id="currencyInputName">Euro:</h3>
+            <input type="number" id="currencyInput" class="form-control form-control-lg" placeholder="Betrag eingeben">
+        </form>
+
+        <div id="output">
+            <div class="card card__1">
+                    <h3>Franken:</h3>
+                    <div class="output" id="firstOutput"></div>
+            </div>
+
+            <div class="card card__2">
+                    <h3>Pfund:</h3>
+                    <div class="output" id="secondOutput"></div>
+            </div>
+
+            <div class="card card__3">
+                    <h3>Dollar:</h3>
+                    <div class="output" id="thirdOutput"></div>
+            </div>
+
+        </div>        
+    </div>
+    <script src="apps/script.js"></script>
 </body>
 </html>
