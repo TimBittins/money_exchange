@@ -1,3 +1,4 @@
+/* R E S E T */
 *,
 *::before,
 *::after {
@@ -6,21 +7,24 @@
     padding: 0;
 }
 
+/* G E N E R A L */
 body {
     width: 100vw;
     min-height: 100vh;
-    padding: max(100px,5givw) 0 0vw;
+    padding: max(100px,5vw) 0 0vw;
     font-family: sans-serif;
     font-size: 62.5%;
     background-color: #2a2a2a;
 }
 
+/* Fonts */
 h1 {
     font-size: min(max(1.8rem, 5vw), 4.4rem);
     text-align: center;
     color: white;
 }
 
+/* C O N T E N T */
 .container {
     position: relative;
     display: flex;
@@ -29,14 +33,16 @@ h1 {
     align-items: center;
     width: max(75%, 300px);
     margin: max(50px,5vw) auto 0;
-    padding: 1vw 8vw 0;
+    padding: 0 8vw 0;
     border-radius: 3vw;
     font-size: min(max(1rem, 2vw), 1.6rem);
     color: white;
 }
 
+
+/* Input */
 #currencyInputName {
-    margin: 1vw 2vw; 
+    margin: 0 2vw 1vw; 
 }
 
 #currencyInput {
@@ -46,7 +52,7 @@ h1 {
     padding: .5vw 2vw;
 }
 
-
+/* Output */
 .card {
     width: 50vw;
     margin-top: 2vw;
