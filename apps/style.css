@@ -11,7 +11,7 @@
 body {
     width: 100vw;
     min-height: 100vh;
-    padding: max(100px,5vw) 0 0vw;
+    padding: max(50px,3vw) 0 0vw;
     font-family: sans-serif;
     font-size: 62.5%;
     background-color: #2a2a2a;
@@ -24,15 +24,46 @@ h1 {
     color: white;
 }
 
+/* Buttons */
+
+
 /* C O N T E N T */
-.container {
+
+/* Select Currency */
+.text__choose {
+    margin: max(50px,3vw) auto 0;
+    font-size: min(max(1.2rem, 2vw), 1.8rem);
+    text-align: center;
+    color: white;
+}
+
+.container--select {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    width: max(50%, 150px);
+    margin: max(10px, 1.5vw) auto 0;
+}
+
+.btn {
+    width:  min(max(2.5rem, 5vw), 5rem);
+    padding: min(max(.3rem, 1vw), 2rem) 0; 
+    font-size: min(max(1rem, 2vw), 1.6rem);
+    background-color: #2a2a9f;
+    color: white;
+    border-radius: 10%;
+}
+
+.container--calculate {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: max(75%, 300px);
-    margin: max(50px,5vw) auto 0;
+    margin: max(50px,3vw) auto 0;
     padding: 0 8vw 0;
     border-radius: 3vw;
     font-size: min(max(1rem, 2vw), 1.6rem);
@@ -55,20 +86,24 @@ h1 {
 /* Output */
 .card {
     width: 50vw;
-    margin-top: 2vw;
+    margin-top: 1vh;
     padding: 2vh 2vw;
+    background-color: #0a680a;
 }
 
-.card__1 {
-    background-color: #2a2a9f;
-}
-.card__2 {
-    background-color: #9f2a2a;
-}
-.card__3 {
-    background-color: #2a9f2a;
-}
 
 .output {
     margin-top: .4rem;
+    font-size: min(max(1rem, 2vw), 1.6rem);
+}
+
+/* I N F O */
+.info {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    font-size: min(max(.5rem, 1vw), 1.2rem);
+    text-align: center;
+    color: white;
+    transform: translateX(-50%);
 }

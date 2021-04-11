@@ -12,7 +12,16 @@
 <body>
     <h1>Geldwechsel App</h1>
 
-    <div class="container">
+    <p class="text__choose">Währung wählen</p>
+
+    <div class="container--select">
+        <button class="btn" type="button">€</button>
+        <button class="btn" type="button">CHF</button>
+        <button class="btn" type="button">£</button>
+        <button class="btn" type="button">$</button>
+    </div>
+
+    <div class="container--calculate">
         <form>
             <h3 id="currencyInputName">Euro:</h3>
             <input type="number" id="currencyInput" class="form-control form-control-lg" placeholder="Betrag eingeben">
@@ -36,6 +45,7 @@
 
         </div>        
     </div>
+    <p class="info">Private Anwendung / Keine Gewährleistung</p>
     <script src="apps/script.js"></script>
 </body>
 </html>
