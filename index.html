@@ -15,31 +15,31 @@
     <p class="text__choose">Währung wählen</p>
 
     <div class="container--select">
-        <button class="btn" type="button">€</button>
-        <button class="btn" type="button">CHF</button>
-        <button class="btn" type="button">£</button>
-        <button class="btn" type="button">$</button>
+        <button id="currencyButtonEuro" class="btn" type="button" onclick="selectEuro">€</button>
+        <button id="currencyButtonFranken" class="btn" type="button" onclick="selectFranken">CHF</button>
+        <button id="currencyButtonPound" class="btn" type="button" onclick="selectPound">£</button>
+        <button id="currencyButtonDollar" class="btn" type="button" onclick="selectDollar">$</button>
     </div>
 
-    <div class="container--calculate">
+    <div class="container--calculate" id="containerCalculate">
         <form>
-            <h3 id="currencyInputName">Euro:</h3>
-            <input type="number" id="currencyInput" class="form-control form-control-lg" placeholder="Betrag eingeben">
+            <h3 id="currencyInputName"></h3>
+            <input type="number" id="currencyInput" placeholder="Betrag eingeben">
         </form>
 
         <div id="output">
             <div class="card card__1">
-                    <h4>Franken:</h4>
+                    <h4 id="currencyOutputNameOne"></h4>
                     <div class="output" id="firstOutput"></div>
             </div>
 
             <div class="card card__2">
-                    <h4>Pfund:</h4>
+                    <h4 id="currencyOutputNameTwo"></h4>
                     <div class="output" id="secondOutput"></div>
             </div>
 
             <div class="card card__3">
-                    <h4>Dollar:</h4>
+                    <h4 id="currencyOutputNameThree"></h4>
                     <div class="output" id="thirdOutput"></div>
             </div>
 
