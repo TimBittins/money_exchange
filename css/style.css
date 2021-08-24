@@ -9,7 +9,7 @@
 
 /* C U S T O M  P R O P E R T I E S */
 :root {
-  --transition: all 3s ease-in-out;
+  --transition: all 200ms ease-in-out;
 }
 
 /* M E D I A  Q U E R I E S */
@@ -92,7 +92,6 @@ h1 {
   background-color: #2a2a9f;
   color: aliceblue;
   border: 0.1rem solid aliceblue;
-  border-radius: 10%;
   transition: background-color 300ms ease-in-out;
 }
 @media (min-width: 43.75em) and (orientation: portrait) {
@@ -104,13 +103,23 @@ h1 {
   .btn {
     margin-top: 1rem;
     font-size: 2rem;
-    border-radius: 1vw;
     cursor: pointer;
   }
   .btn:hover {
     background-color: aliceblue;
     color: #2a2a9f;
   }
+}
+
+.btn--current {
+  padding: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  border: 0.2rem solid white;
+  box-shadow: 0 0.3rem 0.3rem rgba(240, 248, 255, 0.2);
+  transform: scale(1.1) translateY(-0.1rem);
+  transition: var(--transition);
 }
 
 .container--calculate {
@@ -153,7 +162,7 @@ h1 {
   width: 50vw;
   font-size: 1.4rem;
   margin-bottom: 1vw;
-  padding: 0.5vw 2vw;
+  padding: 2vh 2vw;
 }
 @media (min-width: 43.75em) and (orientation: portrait) {
   #currencyInput {

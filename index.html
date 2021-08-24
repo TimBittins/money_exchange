@@ -15,10 +15,10 @@
     <p class="text__choose">Währung wählen</p>
 
     <div class="container--select">
-        <button id="currencyButtonEuro" class="btn" type="button" onclick="selectEuro">€</button>
-        <button id="currencyButtonFranken" class="btn" type="button" onclick="selectFranken">CHF</button>
-        <button id="currencyButtonPound" class="btn" type="button" onclick="selectPound">£</button>
-        <button id="currencyButtonDollar" class="btn" type="button" onclick="selectDollar">$</button>
+        <button id="btn--euro" class="btn" type="button" data-currency="Euro">€</button>
+        <button id="btn--franken" class="btn" type="button" data-currency="Franken">CHF</button>
+        <button id="btn--pound" class="btn" type="button" data-currency="Pfund">£</button>
+        <button id="btn--dollar" class="btn" type="button" data-currency="Dollar">$</button>
     </div>
 
     <div class="container--calculate" id="containerCalculate">
@@ -27,7 +27,7 @@
             <input type="number" id="currencyInput" placeholder="Betrag eingeben">
         </form>
 
-        <div id="output">
+        <div class="output">
             <div class="card card__1">
                     <h4 id="currencyOutputNameOne"></h4>
                     <div class="output" id="firstOutput"></div>
