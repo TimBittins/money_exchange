@@ -31,11 +31,11 @@ function getID(getID) {
 //* VARIABLE SETUP
 const calcContainer = getSelector(".container--calculate");
 const output = getSelector(".output");
-const inputBtns = getSelectors(".btn");
+const inputBtns = [...getSelectors(".btn")];
 
 //* HIDE OUTPUT ELEMENTS
-calcContainer.style.visibility = "hidden";
-output.style.visibility = "hidden";
+// calcContainer.style.visibility = "hidden";
+// output.style.visibility = "hidden";
 
 //* SHOW OUTPUT ELEMENTS
 inputBtns.forEach((button) => {
@@ -43,7 +43,7 @@ inputBtns.forEach((button) => {
     // This shows the Calculation Container by clicking a button
     calcContainer.style.visibility = "visible";
 
-    // This highlights the current Button and unhighlights the rest
+    // This highlights the current Button and unsets the rest
     button.classList.add("btn--current");
     getSelectors(".btn").forEach((button) => {
       if (button !== e.currentTarget) {
@@ -51,26 +51,48 @@ inputBtns.forEach((button) => {
       }
     });
 
-    
-
     // This displays the Input Currency Name
     let currencyName = button.dataset.currency;
-    log("test");
     getID("currencyInputName").innerHTML = `${currencyName}`;
+
+    // This displays the Output Currency Names
+    const outputNamesArray = inputBtns.filter(
+      (outputText) => outputText !== e.currentTarget
+    );
+    outputNamesArray.forEach((outputName) => {
+
+    })
+
+    function setOutputNames(array, outputName) {
+      // for (let key in array) {
+      // if (inputBtns[key] !== outputName)
+      // log(inputBtns[key]);
+      // }
+    }
+    setOutputNames();
   });
 });
+
 // This shows the Output Container by entering a number
 getID("currencyInput").addEventListener("input", function () {
   getSelector(".output").style.visibility = "visible";
 });
 
-// log(inputVisible(inputBtns));
-// // // Input Euro
+//* SHOW OUTPUT CONTENT
+// getID("currencyInput").value = null;
+// function showOutputName() {
+//   const outputName = getID("outputName");
+//   const selectCurrency = (currency) => {
+//     currency = getSelectors(".btn").forEach((button) => {
+//       button.dataset.currency;
+//       return log(currency);
+//     });
+//   };
+// }
+// getID("outputName").innerHTML = 0;
+// getID("outputValue").innerHTML = 0;
 
-document.getElementById("currencyInput").value = null;
-document.getElementById("firstOutput").innerHTML = 0; //Euro
-document.getElementById("secondOutput").innerHTML = 0; //Pound
-document.getElementById("thirdOutput").innerHTML = 0; //Dollar
+showOutputName();
 
 //     document.getElementById("currencyInputName").innerHTML = "Euro:";
 //     document.getElementById("currencyOutputNameOne").innerHTML = "Franken:";
