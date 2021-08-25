@@ -34,10 +34,13 @@ const output = getSelector(".output");
 const inputBtns = [...getSelectors(".btn")];
 
 //* HIDE OUTPUT ELEMENTS
-// calcContainer.style.visibility = "hidden";
-// output.style.visibility = "hidden";
+calcContainer.style.visibility = "hidden";
+output.style.visibility = "hidden";
 
 //* SHOW OUTPUT ELEMENTS
+function showOutputElements() {
+
+}
 inputBtns.forEach((button) => {
   button.addEventListener("click", function (e) {
     // This shows the Calculation Container by clicking a button
@@ -59,17 +62,24 @@ inputBtns.forEach((button) => {
     const outputNamesArray = inputBtns.filter(
       (outputText) => outputText !== e.currentTarget
     );
-    outputNamesArray.forEach((outputName) => {
 
-    })
-
-    function setOutputNames(array, outputName) {
-      // for (let key in array) {
-      // if (inputBtns[key] !== outputName)
-      // log(inputBtns[key]);
-      // }
+    // This creates the output cards for each currency conversion
+    function createOutputElements() {
+      getSelector(".output").innerHTML = "";
+      outputNamesArray.forEach((outputElement) => {
+        const outputName = outputElement.dataset.currency;
+        const card = document.createElement("div");
+        // card.classList.add("card");
+        card.innerHTML = `
+        <div class= "card">
+        <h4 class="outputName">${outputName}</h4>
+        <div class="outputValue"></div>
+        </div>`;
+        getSelector(".output").appendChild(card);
+        getSelectors(".outputValue").forEach((value) => (value.innerHTML = 0));
+      });
     }
-    setOutputNames();
+    createOutputElements();
   });
 });
 
@@ -78,21 +88,43 @@ getID("currencyInput").addEventListener("input", function () {
   getSelector(".output").style.visibility = "visible";
 });
 
-//* SHOW OUTPUT CONTENT
-// getID("currencyInput").value = null;
-// function showOutputName() {
-//   const outputName = getID("outputName");
-//   const selectCurrency = (currency) => {
-//     currency = getSelectors(".btn").forEach((button) => {
-//       button.dataset.currency;
-//       return log(currency);
-//     });
-//   };
+
+
+
+
+
+
+
+
+
+//* CALCULATE CONVERSIONS
+// // Currency Rates
+// const rateEuro = 1;
+// const rateFranken = 1.08;
+// const ratePfund = 0.86;
+// const rateDollar = 1.18;
+// const currencyRates = [rateEuro, rateFranken, ratePfund, rateDollar];
+
+// // Get nessecary elements
+// const originInput = getID("currencyInput");
+// const outputCards = [...getSelectors(".card")];
+// const outputValues = [...getSelectors(".outputValue")];
+
+// function placeRates() {
+
 // }
+// placeRates();
+
+
+
+
+
+
+
+
+
 // getID("outputName").innerHTML = 0;
 // getID("outputValue").innerHTML = 0;
-
-showOutputName();
 
 //     document.getElementById("currencyInputName").innerHTML = "Euro:";
 //     document.getElementById("currencyOutputNameOne").innerHTML = "Franken:";

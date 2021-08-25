@@ -179,21 +179,25 @@ h1 {
 .card {
   width: 50vw;
   margin-top: 1vh;
-  padding: 2vh 2vw;
+  padding: 1vh 2vw;
   background-color: #0a680a;
 }
 
-.output {
-  margin-top: 0.4rem;
-  font-size: 1.2rem;
+.outputName {
+  font-size: 1.6rem;
+}
+
+.outputValue {
+  margin-top: 1rem;
+  font-size: 1.6rem;
 }
 @media (min-width: 43.75em) and (orientation: portrait) {
-  .output {
+  .outputValue {
     font-size: 1.6rem;
   }
 }
 @media (min-width: 65.625em) {
-  .output {
+  .outputValue {
     font-size: 1.8rem;
   }
 }/*# sourceMappingURL=style.css.map */
