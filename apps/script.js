@@ -29,7 +29,7 @@ function getID(getID) {
 }
 
 //* VARIABLE SETUP
-const calcContainer = getSelector(".container--calculate");
+const calcContainer = getSelector(".show");
 const output = getSelector(".output");
 const inputBtns = [...getSelectors(".btn")];
 
