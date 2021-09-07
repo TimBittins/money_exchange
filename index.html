@@ -10,51 +10,71 @@
     <link rel="icon" type="image/ico" href="img/tb_favicon.ico" />
   </head>
   <body>
-    <h1>Geldwechsel App</h1>
+    <header>
+      <h1>Währungsrechner</h1>
+    </header>
 
-    <p class="text__choose">Währung wählen</p>
+    <main>
+      <article class="select">
+        <p class="text__choose">Währung wählen</p>
+        <section class="container__btns">
+          <button id="btn--euro" class="btn" type="button" data-currency="Euro">
+            €
+          </button>
+          <button
+            id="btn--franken"
+            class="btn"
+            type="button"
+            data-currency="Franken"
+          >
+            CHF
+          </button>
+          <button
+            id="btn--pound"
+            class="btn btn--current"
+            type="button"
+            data-currency="Pfund"
+          >
+            £
+          </button>
+          <button
+            id="btn--dollar"
+            class="btn"
+            type="button"
+            data-currency="Dollar"
+          >
+            $
+          </button>
+        </section>
+      </article>
 
-    <div class="container--select">
-      <button id="btn--euro" class="btn" type="button" data-currency="Euro">
-        €
-      </button>
-      <button
-        id="btn--franken"
-        class="btn"
-        type="button"
-        data-currency="Franken"
-      >
-        CHF
-      </button>
-      <button id="btn--pound" class="btn" type="button" data-currency="Pfund">
-        £
-      </button>
-      <button id="btn--dollar" class="btn" type="button" data-currency="Dollar">
-        $
-      </button>
-    </div>
+      <article class="show" id="containerCalculate">
+        <form class="input">
+          <h3 id="currencyInputName">Euro</h3>
+          <input
+            type="number"
+            id="currencyInput"
+            placeholder="Betrag eingeben"
+          />
+        </form>
 
-    <div class="container--calculate" id="containerCalculate">
-      <form>
-        <h3 id="currencyInputName"></h3>
-        <input type="number" id="currencyInput" placeholder="Betrag eingeben" />
-      </form>
-
-      <div class="output">
-        <div class="card">
-          <h4 class="outputName">output:</h4>
-          <div class="outputValue">01</div>
-        </div>
-        <div class="card">
-          <h4 class="outputName">output:</h4>
-          <div class="outputValue">02</div>
-        </div>
-        <div class="card">
-          <h4 class="outputName">output:</h4>
-          <div class="outputValue">03</div>
-        </div>
-      </div>
-    </div>
-    <script src="apps/script.js"></script>
+        <section class="output">
+          <div class="card">
+            <h4 class="outputName">Franken:</h4>
+            <div class="outputValue">8234,21</div>
+          </div>
+          <div class="card">
+            <h4 class="outputName">Dollar:</h4>
+            <div class="outputValue">3463,25</div>
+          </div>
+          <div class="card">
+            <h4 class="outputName">Pfund:</h4>
+            <div class="outputValue">8464,12</div>
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer></footer>
+    <!-- <script src="apps/script.js"></script> -->
   </body>
 </html>

@@ -43,167 +43,182 @@
 
 /* G E N E R A L */
 body {
+  display: flex;
+  flex-flow:column;
+  justify-content: space-evenly;
   width: 100vw;
   min-height: 100vh;
-  padding: max(50px, 3vw) 0 0vw;
+  // padding: max(50px, 3vw) 0 0vw;
   font-family: sans-serif;
   font-size: 62.5%;
+  color: white;
   background-color: #2a2a2a;
 }
 
-/* Fonts */
-h1 {
-  font-size: 1.8rem;
-  text-align: center;
-  color: white;
-
-  @include rwd(mq-m-p) {
-    margin-top: 4rem;
-    font-size: 3rem;
-  }
-
-  @include rwd(mq-l) {
-    margin-top: 2rem;
-    font-size: 4rem;
-  }
-}
-
-/* Buttons */
-
 /* C O N T E N T */
+header {
+  width: 100%;
+  height: 100%;
+  // margin: 2rem auto 0;
 
-/* Select Currency */
-.text__choose {
-  margin: 1.7rem auto 0;
-  font-size: 1.2rem;
-  text-align: center;
-  color: white;
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    color: white;
 
-  @include rwd(mq-m-p) {
-    margin-top: 4rem;
-    font-size: 2.4rem;
-  }
+    @include rwd(mq-m-p) {
+      margin-top: 4rem;
+      font-size: 3rem;
+    }
 
-  @include rwd(mq-l) {
-    margin-top: 3rem;
-    font-size: 2rem;
-  }
-}
-
-.container--select {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1.5rem;
-  width: 50%;
-  margin: 2rem auto 0;
-
-  @include rwd(mq-s-l) {
-    grid-template-columns: repeat(4, 1fr);
-    margin: 1rem auto 0;
-  }
-  @include rwd(mq-m-p) {
-    grid-template-columns: repeat(4, 1fr);
-    margin: 2rem auto 0;
-  }
-}
-.btn {
-  /* width:  min(max(2.5rem, 5vw), 5rem); */
-  padding: min(max(0.3rem, 1rem), 2rem) min(max(0.3rem, 1rem), 2rem);
-  font-size: 1rem;
-  background-color: #2a2a9f;
-  color: aliceblue;
-  border: 0.1rem solid aliceblue;
-  transition: background-color 300ms ease-in-out;
-
-  @include rwd(mq-m-p) {
-    font-size: 1.6rem;
-  }
-  @include rwd(mq-l) {
-    margin-top: 1rem;
-    font-size: 2rem;
-    cursor: pointer;
-    &:hover {
-      background-color: aliceblue;
-      color: #2a2a9f;
+    @include rwd(mq-l) {
+      margin-top: 2rem;
+      font-size: 4rem;
     }
   }
 }
 
-.btn--current {
-  padding: 0;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: white;
-  border: 0.2rem solid white;
-  box-shadow: 0 0.3rem 0.3rem rgba(240, 248, 255, 0.2);
-  transform: scale(1.1) translateY(-0.1rem);
-  transition: var(--transition);
+main {
+  /* SELECT */
+  .select {
+    width: 75%;
+    margin: 0 auto;
+
+    .text__choose {
+      font-size: 1.2rem;
+      text-align: center;
+      @include rwd(mq-m-p) {
+        margin-top: 4rem;
+        font-size: 2.4rem;
+      }
+      @include rwd(mq-l) {
+        margin-top: 3rem;
+        font-size: 2rem;
+      }
+    }
+
+    .container__btns {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1.5rem;
+      margin: 1rem auto 0;
+      @include rwd(mq-s-l) {
+        grid-template-columns: repeat(4, 1fr);
+        width: 50%;
+        margin: 1rem auto 0;
+      }
+      @include rwd(mq-m-p) {
+        grid-template-columns: repeat(4, 1fr);
+        margin: 2rem auto 0;
+      }
+    }
+
+    .btn {
+      // min-width:  min(max(2.5rem, 5vw), 5rem);
+      // padding: min(max(0.3rem, 1rem), 2rem) min(max(0.3rem, 1rem), 2rem);
+      padding: .5rem 1rem;
+      font-size: 1.6rem;
+      color: aliceblue;
+      background-color: #2a2a9f;
+      border: 0.1rem solid aliceblue;
+      transition: background-color 300ms ease-in-out;
+      @include rwd(mq-m-p) {
+        font-size: 1.6rem;
+      }
+      @include rwd(mq-l) {
+        margin-top: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        &:hover {
+          background-color: aliceblue;
+          color: #2a2a9f;
+        }
+      }
+    }
+
+    .btn--current {
+      padding: 0;
+      // font-size: 1.8rem;
+      font-weight: 600;
+      color: white;
+      border: 0.2rem solid white;
+      box-shadow: 0 0.3rem 0.3rem rgba(240, 248, 255, 0.2);
+      transform: scale(1.1) translateY(-0.1rem);
+      transition: var(--transition);
+    }
+  }
+
+  .show {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    margin: 2rem auto 0;
+    @include rwd(mq-s-l) {
+      margin: 1.7rem auto;
+    }
+    @include rwd(mq-m-p) {
+      margin: 4rem auto 0;
+      font-size: 1.6rem;
+    }
+    @include rwd(mq-l) {
+      margin-top: 4rem;
+      font-size: 1.6rem;
+    }
+
+    /* Input */
+    .input {
+      width: 100%;
+
+      #currencyInputName {
+        font-size: 1.6rem;
+      }
+
+      #currencyInput {
+        width: 100%;
+        font-size: 1.4rem;
+        padding: 0.75rem 1rem;
+
+        @include rwd(mq-m-p) {
+          font-size: 2rem;
+        }
+        @include rwd(mq-l) {
+          font-size: 2.4rem;
+        }
+      }
+    }
+
+    /* Output */
+    .output {
+      width: 100%;
+      margin: 1rem 0 0;
+      font-size: 1.6rem;
+
+      .card {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        padding: .5rem 1rem;
+        background-color: #0a680a;
+      }
+
+      .outputValue {
+        @include rwd(mq-m-p) {
+          font-size: 1.6rem;
+        }
+        @include rwd(mq-l) {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
 }
 
-.container--calculate {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: max(75%, 300px);
-  margin: 2rem auto 0;
-  padding: 0 8vw 0;
-  border-radius: 3vw;
-  font-size: 1rem;
-  color: white;
-
-  @include rwd(mq-s-l) {
-    margin: 1.7rem auto;
-  }
-  @include rwd(mq-m-p) {
-    margin: 4rem auto 0;
-    font-size: 1.6rem;
-  }
-  @include rwd(mq-l) {
-    margin-top: 4rem;
-    font-size: 1.6rem;
-  }
-}
-
-/* Input */
-#currencyInputName {
-  margin: 0 0vw 1vw;
-}
-
-#currencyInput {
-  width: 50vw;
-  font-size: 1.4rem;
-  margin-bottom: 1vw;
-  padding: 2vh 2vw;
-
-  @include rwd(mq-m-p) {
-    font-size: 2rem;
-  }
-  @include rwd(mq-l) {
-    font-size: 2.4rem;
-  }
-}
-
-/* Output */
-.card {
-  width: 50vw;
-  margin-top: 1vh;
-  padding: 1vh 2vw;
-  background-color: #0a680a;
-}
-
-.outputName {
-  font-size: 1.6rem;
-}
-.outputValue {
-  margin-top: 1rem;
-  font-size: 1.6rem; 
-  @include rwd(mq-m-p) {
-    font-size: 1.6rem;
-  }
-  @include rwd(mq-l) {
-    font-size: 1.8rem;
-  }
+footer {
+  width: 100%;
+  // padding: 2rem 0;
+  // background-color: darkblue;
 }
