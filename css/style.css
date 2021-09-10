@@ -197,7 +197,7 @@ main .show .output {
     margin: 2rem 0 0;
   }
 }
-main .show .output .card {
+main .show .output .output__card {
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
@@ -205,12 +205,12 @@ main .show .output .card {
   background-color: #0a680a;
 }
 @media (min-width: 43.75em) and (orientation: portrait) {
-  main .show .output .card {
+  main .show .output .output__card {
     padding: 1rem 1.5rem;
   }
 }
 @media (min-width: 65.625em) {
-  main .show .output .card {
+  main .show .output .output__card {
     flex-flow: column;
     gap: 1rem;
     justify-content: space-between;
