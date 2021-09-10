@@ -27,6 +27,7 @@ function getID(getID) {
     throw Error(`There is no ID called ${getID}`);
   }
 }
+
 //* CALCULATION
 const rateEuro = 1;
 const rateFranks = 1.08;
@@ -35,11 +36,14 @@ const rateDollar = 1.18;
 const base = 1;
 const currencyRates = [rateEuro, rateFranks, ratePound, rateDollar];
 
- 
 function calculateConversion(inputRate, value, rates) {
-  for (let rate of rates) 
-     log(base / inputRate * value * rate);
+  let convertedRates = [];
+  for (let rate of rates) {
+    let calc = (base / inputRate) * value * rate;
+    convertedRates.push(calc.toFixed(2));
+  }
+  return convertedRates;
 }
 
-const output = calculateConversion(rateDollar, 1, currencyRates);
-log(output)
+const conversion = calculateConversion(rateDollar, 1, currencyRates);
+log(conversion);
