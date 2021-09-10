@@ -1,8 +1,9 @@
 "use strict";
 
+// ----------------------------------------------------------------------
+
 //* BASIC SETUP
 const log = console.log.bind(console);
-// log("start");
 function getSelector(getElement) {
   const element = document.querySelector(getElement);
   if (element) {
@@ -28,6 +29,64 @@ function getID(getID) {
   }
 }
 
+// ----------------------------------------------------------------------
+
+//* GLOBAL VARIABLES
+const inputBtns = [...getSelectors(".btn")];
+
+// ----------------------------------------------------------------------
+
+//* DOM EVENTS
+inputBtns.forEach((button) => {
+  selectInputCurrency(button);
+  setOutputCurrencies(button);
+});
+
+function selectInputCurrency(button) {
+  button.addEventListener("click", function (e) {
+    // highlight current button
+    button.classList.add("btn--current");
+    getSelectors(".btn").forEach((button) => {
+      if (button !== e.currentTarget) {
+        button.classList.remove("btn--current");
+      }
+    });
+
+    // display input currency name
+    let currencyName = button.dataset.currency;
+    getID("currencyInputName").innerHTML = `${currencyName}`;
+  });
+}
+
+function setOutputCurrencies(button) {
+  button.addEventListener("click", function (e) {
+    function getOutputCurrency(currencies) {
+      const outputCurrenciesArray = inputBtns.filter(
+        (outputContent) => outputContent !== e.currentTarget
+      );
+
+      currencies = [];
+      outputCurrenciesArray.forEach((outputElement) => {
+        const outputName = outputElement.dataset.currency;
+        currencies.push(outputName);
+      });
+      return currencies;
+    }
+    const outputCurrencies = getOutputCurrency();
+
+    function setOutputCurrency(array) {
+      const outputElements = [...getSelectors(".output__name")];
+      outputElements.forEach(() => {
+        for (let i = 0; i < outputElements.length; i++)
+          outputElements[i].innerHTML = array[i];
+      });
+    }
+    setOutputCurrency(outputCurrencies);
+  });
+}
+
+// ----------------------------------------------------------------------
+
 //* CALCULATION
 const rateEuro = 1;
 const rateFranks = 1.08;
@@ -46,4 +105,4 @@ function calculateConversion(inputRate, value, rates) {
 }
 
 const conversion = calculateConversion(rateDollar, 1, currencyRates);
-log(conversion);
+// log(conversion);

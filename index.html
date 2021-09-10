@@ -18,30 +18,30 @@
       <article class="select">
         <p class="text__choose">Währung wählen</p>
         <section class="container__btns">
-          <button id="btn--euro" class="btn" type="button" data-currency="Euro">
+          <button type="button" class="btn" id="btn--euro" data-currency="Euro">
             €
           </button>
 
           <button
-            id="btn--franken"
-            class="btn"
             type="button"
+            class="btn"
+            id="btn--franken"
             data-currency="Franken"
           >
             CHF
           </button>
           <button
-            id="btn--pound"
-            class="btn"
             type="button"
+            class="btn"
+            id="btn--pound"
             data-currency="Pfund"
           >
             £
           </button>
           <button
-            id="btn--dollar"
-            class="btn"
             type="button"
+            class="btn"
+            id="btn--dollar"
             data-currency="Dollar"
           >
             $
@@ -51,7 +51,7 @@
 
       <article class="show" id="containerCalculate">
         <form class="input">
-          <h3 id="currencyInputName">Euro</h3>
+          <h3 id="currencyInputName">Input Currency</h3>
           <input
             type="number"
             id="currencyInput"
@@ -60,17 +60,17 @@
         </form>
 
         <section class="output">
-          <div class="card">
-            <h4 class="outputName">Franken:</h4>
-            <div class="outputValue">0</div>
+          <div class="output__card">
+            <h4 class="output__name">Output 1:</h4>
+            <div class="output__value">0</div>
           </div>
-          <div class="card">
-            <h4 class="outputName">Dollar:</h4>
-            <div class="outputValue">0</div>
+          <div class="output__card">
+            <h4 class="output__name">Output 2:</h4>
+            <div class="output__value">0</div>
           </div>
-          <div class="card">
-            <h4 class="outputName">Pfund:</h4>
-            <div class="outputValue">0</div>
+          <div class="output__card">
+            <h4 class="output__name">Output 3:</h4>
+            <div class="output__value">0</div>
           </div>
         </section>
       </article>
