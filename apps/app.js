@@ -40,6 +40,7 @@ const inputBtns = [...getSelectors(".btn")];
 inputBtns.forEach((button) => {
   selectInputCurrency(button);
   setOutputCurrencies(button);
+  displayOutputValues(button);
 });
 
 function selectInputCurrency(button) {
@@ -88,21 +89,62 @@ function setOutputCurrencies(button) {
 // ----------------------------------------------------------------------
 
 //* CALCULATION
-const rateEuro = 1;
-const rateFranks = 1.08;
-const ratePound = 0.86;
-const rateDollar = 1.18;
-const base = 1;
-const currencyRates = [rateEuro, rateFranks, ratePound, rateDollar];
+function Currency(name, rate, unit) {
+  (this.name = name), (this.rate = rate), (this.unit = unit);
+}
+const euro = new Currency("Euro", 1, "EUR");
+const franks = new Currency("Franken", 1.08, "CHF");
+const pound = new Currency("Pfund", 0.86, "£");
+const dollar = new Currency("Dollar", 1.18, "$");
 
-function calculateConversion(inputRate, value, rates) {
-  let convertedRates = [];
+const currencies = [euro, franks, pound, dollar];
+
+// calculate rates
+const currentValue = getID("currencyInput");
+
+
+function displayOutputValues(button) {
+  button.addEventListener("click", function (e) {
+    const calculateCurrencies = inputBtns.filter(
+      (calcCurr) => calcCurr !== e.currentTarget
+    );
+      log(calculateCurrencies)
+    //  log(e.currentTarget.dataset.currency)
+  });
+}
+
+
+function calculateConversion(inputRate, currentValue, rates) {
+  const base = 1;
+  const convertedRates = [];
   for (let rate of rates) {
-    let calc = (base / inputRate) * value * rate;
+    let calc = (base / inputRate) * currentValue * rate;
     convertedRates.push(calc.toFixed(2));
   }
   return convertedRates;
 }
+const conversions = calculateConversion(franks.rate, 1, currencies);
 
-const conversion = calculateConversion(rateDollar, 1, currencyRates);
-// log(conversion);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function calculateConversion(inputRate, currentValue, rates) {
+//   const base = 1;
+//   const convertedRates = [];
+//   for (let rate of rates) {
+//     let calc = (base / inputRate) * currentValue * rate;
+//     convertedRates.push(calc.toFixed(2));
+//   }
+//   return convertedRates;
+// }
+// const conversions = calculateConversion(franks.rate, 1, currencies);
