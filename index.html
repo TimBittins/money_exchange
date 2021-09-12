@@ -23,7 +23,7 @@
             class="btn"
             id="btn--euro"
             data-currency="Euro"
-            onclick="selectEuro()"
+            onclick="selectCurrencies(this.dataset.currency)"
           >
             €
           </button>
@@ -33,7 +33,7 @@
             class="btn"
             id="btn--franken"
             data-currency="Franken"
-            onclick="selectFranken()"
+            onclick="selectCurrencies(this.dataset.currency)"
           >
             CHF
           </button>
@@ -42,7 +42,7 @@
             class="btn"
             id="btn--pound"
             data-currency="Pfund"
-            onclick="selectPfund()"
+            onclick="selectCurrencies(this.dataset.currency)"
           >
             £
           </button>
@@ -51,7 +51,7 @@
             class="btn"
             id="btn--dollar"
             data-currency="Dollar"
-            onclick="selectDollar()"
+            onclick="selectCurrencies(this.dataset.currency)"
           >
             $
           </button>
@@ -63,7 +63,7 @@
           <h3 id="currencyInputName">Input Currency</h3>
           <input
             type="number"
-            id="currencyInput"
+            id="currencyInputValue"
             placeholder="Betrag eingeben"
           />
         </form>
@@ -87,6 +87,6 @@
     <footer>
       <p>private Anwendung ohne Gewähr</p>
     </footer>
-    <script src="apps/app.js"></script>
+    <script src="apps/calc.js"></script>
   </body>
 </html>

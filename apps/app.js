@@ -37,15 +37,14 @@ function getID(getID) {
 //* GLOBAL VARIABLES
 const inputBtns = [...getSelectors(".btn")];
 const outputs = [...getSelectors(".output__value")];
-const currencyInput = getID("currencyInput");
 
 // ----------------------------------------------------------------------
 
 //* DOM EVENTS
 inputBtns.forEach((button) => {
   selectInputCurrency(button);
-  setOutputCurrencies(button);
-  displayOutputValues(button);
+  // setOutputCurrencies(button);
+  // displayOutputValues(button);
 });
 
 function selectInputCurrency(button) {
@@ -92,68 +91,83 @@ function setOutputCurrencies(button) {
 }
 
 // display outputs
-function displayOutputValues(button) {
-  button.addEventListener("click", function (e) {
-    inputBtns.filter((calcCurr) => calcCurr !== e.currentTarget);
-  });
-}
+// function displayOutputValues(button) {
+//   button.addEventListener("click", function (e) {
+//     inputBtns.filter((calcCurr) => calcCurr !== e.currentTarget);
+//   });
+// }
 outputs.forEach((value) => (value.innerHTML = 0));
 
 // ----------------------------------------------------------------------
 
 //* CALCULATION
-// create currency objects
-function Currency(name, rate, unit) {
-  (this.name = name), (this.rate = rate), (this.unit = unit);
-}
-const euro = new Currency("Euro", 1, "EUR");
-const franks = new Currency("Franken", 1.08, "CHF");
-const pound = new Currency("Pfund", 0.86, "£");
-const dollar = new Currency("Dollar", 1.18, "$");
+const inputValue = getID("currencyInputValue");
+let currentValue = 0;
 
-const currencies = [euro, franks, pound, dollar];
+// create currency objects
+const euro = { name: "Euro", rate: 1, unit: "EUR" };
+const franks = { name: "Franken", rate: 1.08, unit: "CHF" };
+const pound = { name: "Pfund", rate: 0.86, unit: "£" };
+const dollar = { name: "Dollar", rate: 1.18, unit: "$" };
+// function Currency(name, rate, unit) {
+//   (this.name = name), (this.rate = rate), (this.unit = unit);
+// }
+// const euro = new Currency("Euro", 1, "EUR");
+// const franks = new Currency("Franken", 1.08, "CHF");
+// const pound = new Currency("Pfund", 0.86, "£");
+// const dollar = new Currency("Dollar", 1.18, "$");
+
+const allCurrencies = [euro, franks, pound, dollar];
 
 // set current currency
 let currentCurrency = "";
 
-function selectEuro() {
-  return (currentCurrency = "Euro");
-}
-function selectFranken() {
-  return (currentCurrency = "Franken");
-}
-function selectPfund() {
-  return (currentCurrency = "Pfund");
-}
-function selectDollar() {
-  return (currentCurrency = "Dollar");
+function selectCurrency(this_currency) {
+  return (currentCurrency = this_currency);
 }
 
+inputValue.addEventListener("input", function (currentValue) {
+  log(currentCurrency);
 
-  currencyInput.addEventListener("input", function () {
-    const currentValue = currencyInput.value;
-    // log(currentValue);
+  function calculateConversion(currentCurrency, currentValue, allCurrencies) {
+    currentValue = inputValue.value;
+    log(currentValue);
 
-    function calculateConversion(inputCurrency, currentValue, array) {
-      log(inputCurrency)
-      log(currentValue)
-      log(array[2].rate)
+    // set output currencies for display and calculation
+    const outputCurrencies = allCurrencies.filter(function (element) {
+      return element.name !== currentCurrency;
+    });
+    let outputdisplay = [...outputCurrencies];
+    log(outputdisplay);
 
-      // const base = 1;
-      // const convertedRates = [];
-      // log(currencies)
-      // for (let key of array) {
-      //   let calc = (base / inputCurrency) * currentValue * key;
-      //   convertedRates.push(calc.toFixed(2));
-      // }
+    const outputElements = [...getSelectors(".output__name")];
+    outputElements.forEach(() => {
+      for (let i = 0; i < outputElements.length; i++)
+        outputElements[i].innerHTML = outputCurrencies[i].name;
+    });
 
-      // return convertedRates;
+    const base = 1;
+
+    const convertedRates = [];
+
+    for (let currency of outputCurrencies) {
+      let calc = (base / currentCurrency) * currentValue * currency.rate;
+      log(calc);
+      convertedRates.push(calc.toFixed(2));
     }
 
-    const conversions = calculateConversion(currentCurrency, 1, currencies);
-    // log(conversions)
-  });
+    return convertedRates;
+    log(convertedRates);
+  }
 
+  const conversions = calculateConversion(
+    currentCurrency,
+    currentValue,
+    allCurrencies
+  );
+
+  log(conversions);
+});
 
 // log(conversions)
 
