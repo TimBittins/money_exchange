@@ -18,7 +18,13 @@
       <article class="select">
         <p class="text__choose">Währung wählen</p>
         <section class="container__btns">
-          <button type="button" class="btn" id="btn--euro" data-currency="Euro">
+          <button
+            type="button"
+            class="btn"
+            id="btn--euro"
+            data-currency="Euro"
+            onclick="selectEuro()"
+          >
             €
           </button>
 
@@ -27,6 +33,7 @@
             class="btn"
             id="btn--franken"
             data-currency="Franken"
+            onclick="selectFranken()"
           >
             CHF
           </button>
@@ -35,6 +42,7 @@
             class="btn"
             id="btn--pound"
             data-currency="Pfund"
+            onclick="selectPfund()"
           >
             £
           </button>
@@ -43,6 +51,7 @@
             class="btn"
             id="btn--dollar"
             data-currency="Dollar"
+            onclick="selectDollar()"
           >
             $
           </button>
@@ -62,15 +71,15 @@
         <section class="output">
           <div class="output__card">
             <h4 class="output__name">Output 1:</h4>
-            <div class="output__value">0</div>
+            <div class="output__value"></div>
           </div>
           <div class="output__card">
             <h4 class="output__name">Output 2:</h4>
-            <div class="output__value">0</div>
+            <div class="output__value"></div>
           </div>
           <div class="output__card">
             <h4 class="output__name">Output 3:</h4>
-            <div class="output__value">0</div>
+            <div class="output__value"></div>
           </div>
         </section>
       </article>
