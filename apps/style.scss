@@ -7,30 +7,16 @@
   padding: 0;
 }
 
-/* C U S T O M  P R O P E R T I E S */
-:root {
-  --transition: all 200ms ease-in-out;
-}
 
 /* M E D I A  Q U E R I E S */
 @mixin rwd($breakpoint) {
-  @if $breakpoint==mq-s-l {
-    @media (min-width: 30em) and (orientation: landscape) {
-      @content;
-    }
-  }
   @if $breakpoint==mq-m-p {
-    @media (min-width: 43.75em) and (orientation: portrait) {
-      @content;
-    }
-  }
-  @if $breakpoint==mq-m-l {
-    @media (min-width: 56.25em) and (orientation: landscape) {
+    @media (min-width: 43.75em) {
       @content;
     }
   }
   @if $breakpoint==mq-l {
-    @media (min-width: 65.625em) {
+    @media (min-width: 75em) {
       @content;
     }
   }
@@ -42,37 +28,36 @@
 }
 
 /* G E N E R A L */
-body {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  width: 100vw;
-  min-height: 100vh;
-  // padding: max(50px, 3vw) 0 0vw;
+html {
   font-family: sans-serif;
-  font-size: 62.5%;
+  font-size: 100%;
   color: white;
   background-color: #2a2a2a;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
 }
 
 /* C O N T E N T */
 header {
   width: 100%;
   height: 100%;
-  @include rwd(mq-s-l) {
-    margin: 2rem auto 0;
-  }
-
+  
   h1 {
     font-size: 1.8rem;
     text-align: center;
     color: white;
+    margin-top: 1.5rem;
 
     @include rwd(mq-m-p) {
       margin-top: 4rem;
       font-size: 3rem;
     }
+
     @include rwd(mq-l) {
+      margin-top: 6rem;
       font-size: 4rem;
     }
   }
@@ -83,6 +68,7 @@ main {
   .select {
     width: 75%;
     margin: 0 auto;
+
     @include rwd(mq-s-l) {
       margin: 1rem auto 0;
     }
@@ -90,8 +76,15 @@ main {
     .text__choose {
       font-size: 1.2rem;
       text-align: center;
+      margin-top: 1.2rem;
+
       @include rwd(mq-m-p) {
         margin-top: 4rem;
+        font-size: 2rem;
+      }
+
+      @include rwd(mq-l) {
+        margin-top: 6rem;
         font-size: 2rem;
       }
     }
@@ -102,14 +95,13 @@ main {
       grid-template-columns: 1fr 1fr;
       place-items: center stretch;
       grid-gap: 1.5rem;
-      margin: 1rem auto 0;
-      @include rwd(mq-s-l) {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      margin: 0.8rem auto 0;
+      
       @include rwd(mq-m-p) {
         grid-template-columns: repeat(4, 1fr);
         margin: 2rem auto 0;
       }
+
       @include rwd(mq-l) {
         width: 75%;
         grid-gap: 4rem;
@@ -118,33 +110,49 @@ main {
     }
 
     .btn {
-      padding: 0.5rem 1rem;
-      font-size: 1.6rem;
+      padding: 1rem;
+      font-size: 1.2rem;
       color: aliceblue;
       background-color: #2a2a9f;
       border: 0.1rem solid aliceblue;
       transition: background-color 300ms ease-in-out;
+
       @include rwd(mq-m-p) {
         font-size: 1.6rem;
       }
+
       @include rwd(mq-l) {
-        padding: 1rem 2rem;
+        padding: 1.2rem 2rem;
         font-size: 2rem;
         cursor: pointer;
+
         &:hover {
-          background-color: aliceblue;
           color: #2a2a9f;
+          background-color: aliceblue;
+          border: 0.1rem solid #2a2a9f;
         }
       }
     }
 
     .btn--current {
+      padding: 0.8rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: white;
+      background-color: #19198e;
       border: 0.2rem solid white;
-      box-shadow: 0 0.3rem 0.3rem rgba(240, 248, 255, 0.2);
-      transform: scale(1.1) translateY(-0.1rem);
-      transition: var(--transition);
+
+      @include rwd(mq-l) {
+        padding: 1rem 2rem;
+        font-size: 2.5rem;
+        border: 0.3rem solid white;
+
+        &:hover {
+          color: #2a2a9f;
+          background-color: aliceblue;
+          border: 0.3rem solid #2a2a9f;
+        }
+      }
     }
   }
 
@@ -157,15 +165,14 @@ main {
     align-items: center;
     width: 75%;
     margin: 2rem auto 0;
-    @include rwd(mq-s-l) {
-      margin: 1.7rem auto;
-    }
+    
     @include rwd(mq-m-p) {
       margin: 4rem auto 0;
       font-size: 2rem;
     }
+
     @include rwd(mq-l) {
-      margin-top: 4rem;
+      margin-top: 6rem;
       font-size: 1.6rem;
     }
 
@@ -177,19 +184,27 @@ main {
       }
 
       #currencyInputName {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+
+        @include rwd(mq-m-p) {
+          font-size: 1.8rem;
+        }
+
+        @include rwd(mq-l) {
+          font-size: 2.2rem;
+        }
       }
 
       #currencyInputValue {
         width: 100%;
-        font-size: 1.8rem;
-        padding: 0.75rem 1rem;
+        font-size: 1.4rem;
+        padding: 0.4rem 1rem;
+        margin-top: 0.5rem;
 
-        @include rwd(mq-m-p) {
-        }
         @include rwd(mq-l) {
           padding: 0.5rem 1rem;
           margin: 0.5rem 0;
+          font-size: 2rem;
         }
       }
     }
@@ -197,13 +212,19 @@ main {
     /* Output */
     .output {
       width: 100%;
-      margin: 1rem 0 0;
-      font-size: 1.6rem;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+
+      @include rwd(mq-m-p) {
+        font-size: 1.8rem;
+      }
+
       @include rwd(mq-l) {
         display: flex;
         justify-content: space-between;
         width: 75%;
         margin: 2rem 0 0;
+        font-size: 2rem;
       }
 
       .output__card {
@@ -212,16 +233,24 @@ main {
         margin-top: 0.5rem;
         padding: 0.5rem 1rem;
         background-color: #0a680a;
+
         @include rwd(mq-m-p) {
           padding: 1rem 1.5rem;
         }
+
         @include rwd(mq-l) {
           flex-flow: column;
-          gap: 1rem;
+          gap: .5rem;
           justify-content: space-between;
           width: 32%;
           padding: 1rem 2rem;
         }
+      }
+
+      .output__value {
+        @include rwd(mq-l) {
+        font-size: 1.6rem;
+      }
       }
     }
   }
@@ -230,12 +259,15 @@ main {
 footer {
   width: 100%;
   padding: 1rem 0;
+
   p {
     font-size: 0.75rem;
     text-align: center;
+
     @include rwd(mq-m-p) {
       font-size: 1rem;
     }
+
     @include rwd(mq-l) {
       font-size: 1.2rem;
     }

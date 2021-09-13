@@ -38,7 +38,7 @@ function getID(getID) {
 const inputBtns = [...getSelectors(".btn")];
 const outputs = [...getSelectors(".output__value")];
 
-const euro = { name: "Euro", rate: 1, unit: "EUR" };
+const euro = { name: "Euro", rate: 1, unit: "€" };
 const franks = { name: "Franken", rate: 1.08, unit: "CHF" };
 const pound = { name: "Pfund", rate: 0.86, unit: "£" };
 const dollar = { name: "Dollar", rate: 1.18, unit: "$" };
@@ -124,14 +124,13 @@ currentValue.addEventListener("input", function (currentValue) {
   function calculateConversion(rate, value, outputArray) {
     const base = 1;
     const convertedRates = [];
-    log(`inputcurrency is ${inputCurrency}`);
-    log(`inputrate is ${rate}`);
-    log(`inputvalue is ${value}`);
-    log(`outputcurrencies are ${outputArray}`);
+    // log(`inputcurrency is ${inputCurrency}`);
+    // log(`inputrate is ${rate}`);
+    // log(`inputvalue is ${value}`);
+    // log(`outputcurrencies are ${outputArray}`);
 
     for (let currency of outputArray) {
       let calc = (base / rate) * value * currency.rate;
-      // log(calc);
       convertedRates.push(calc.toFixed(2));
     }
 
@@ -141,12 +140,11 @@ currentValue.addEventListener("input", function (currentValue) {
   calculateConversion(inputRate, inputValue, outputCurrencies);
 
   // display output values
+  log(outputCurrencies)
   outputs.forEach(() => {
     for (let i = 0; i < outputs.length; i++)
-      outputs[i].innerHTML = calculateConversion(
-        inputRate,
-        inputValue,
-        outputCurrencies
-      )[i];
+      outputs[i].innerHTML =
+        calculateConversion(inputRate, inputValue, outputCurrencies)[i] + " " +
+        outputCurrencies[i].unit;
   });
 });
