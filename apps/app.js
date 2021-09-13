@@ -2,7 +2,7 @@
 
 // ----------------------------------------------------------------------
 
-//* BASIC SETUP
+//* UTILITIES
 const log = console.log.bind(console);
 
 function getSelector(getElement) {
@@ -46,11 +46,20 @@ const allCurrencies = [euro, franks, pound, dollar];
 
 let inputCurrency = "";
 let outputCurrencies = "";
-let currentValue = null;
+// let currentValue = null;
+
+// ----------------------------------------------------------------------
+
+//* HIDE ELEMENTS
+getSelector(".input").style.visibility = "hidden";
+getSelector(".output").style.visibility = "hidden";
+
+// ----------------------------------------------------------------------
 
 //* DOM EVENTS
 inputBtns.forEach((button) => {
   styleInputCurrency(button);
+  showInput(button);
 });
 
 function styleInputCurrency(button) {
@@ -83,50 +92,61 @@ function selectCurrencies(this_currency) {
   });
   // reset all values
   outputs.forEach((value) => (value.innerHTML = 0));
-  currentValue = null;
+  getID("currencyInputValue").value = null;
   return inputCurrency;
 }
 
+// show input section
+function showInput(button) {
+  button.addEventListener("click", function (e) {
+    getSelector(".input").style.visibility = "visible";
+  });
+}
 // ----------------------------------------------------------------------
 
 //* CALCULATION
-currentValue = getID("currencyInputValue");
-let inputValue = 0;
+let currentValue = getID("currencyInputValue");
 
-// calculate and set outputs
 currentValue.addEventListener("input", function (currentValue) {
-  // set input currency for display and calculation
+  // show output section
+  getSelector(".output").style.visibility = "visible";
+
+  // set rate for calculation
   const inputRate = allCurrencies.filter(function (element) {
     return element.name === inputCurrency;
   })[0].rate;
-  log(inputCurrency);
 
-  log(inputRate);
+  // set value for calculation
+  currentValue = getID("currencyInputValue");
+  let inputValue = currentValue.value;
 
-  function calculateConversion(inputCurrency, inputValue, allCurrencies) {
-    currentValue = getID("currencyInputValue");
-    inputValue = currentValue.value;
-    log(inputValue);
-
-    //calculate
+  //calculate
+  function calculateConversion(rate, value, outputArray) {
     const base = 1;
     const convertedRates = [];
+    log(`inputcurrency is ${inputCurrency}`);
+    log(`inputrate is ${rate}`);
+    log(`inputvalue is ${value}`);
+    log(`outputcurrencies are ${outputArray}`);
 
-    for (let currency of outputCurrencies) {
-      let calc = (base / 3) * currentValue * currency;
-      //   log(calc);
+    for (let currency of outputArray) {
+      let calc = (base / rate) * value * currency.rate;
+      // log(calc);
       convertedRates.push(calc.toFixed(2));
     }
 
-    // return convertedRates;
-    // log(convertedRates);
+    return convertedRates;
   }
 
-  const conversions = calculateConversion(
-    inputCurrency,
-    currentValue,
-    allCurrencies
-  );
+  calculateConversion(inputRate, inputValue, outputCurrencies);
 
-  //   log(conversions);
+  // display output values
+  outputs.forEach(() => {
+    for (let i = 0; i < outputs.length; i++)
+      outputs[i].innerHTML = calculateConversion(
+        inputRate,
+        inputValue,
+        outputCurrencies
+      )[i];
+  });
 });
