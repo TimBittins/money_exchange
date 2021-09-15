@@ -1,10 +1,6 @@
 "use strict";
 
-// ----------------------------------------------------------------------
-
-//* UTILITIES
 const log = console.log.bind(console);
-
 function getSelector(getElement) {
   const element = document.querySelector(getElement);
   if (element) {
@@ -13,7 +9,6 @@ function getSelector(getElement) {
     throw Error(`There is no element called ${getElement}`);
   }
 }
-
 function getSelectors(getElements) {
   const elements = document.querySelectorAll(getElements);
   if (elements) {
@@ -22,7 +17,6 @@ function getSelectors(getElements) {
     throw Error(`There is no elements called ${getElement}`);
   }
 }
-
 function getID(getID) {
   const element = document.getElementById(getID);
   if (element) {
@@ -32,31 +26,19 @@ function getID(getID) {
   }
 }
 
-// ----------------------------------------------------------------------
-
-//* GLOBAL VARIABLES
 const inputBtns = [...getSelectors(".btn")];
 const outputs = [...getSelectors(".output__value")];
-
 const euro = { name: "Euro", rate: 1, unit: "€" };
 const franks = { name: "Franken", rate: 1.08, unit: "CHF" };
 const pound = { name: "Pfund", rate: 0.86, unit: "£" };
 const dollar = { name: "Dollar", rate: 1.18, unit: "$" };
 const allCurrencies = [euro, franks, pound, dollar];
-
 let inputCurrency = "";
 let outputCurrencies = "";
-// let currentValue = null;
 
-// ----------------------------------------------------------------------
-
-//* HIDE ELEMENTS
 getSelector(".input").style.visibility = "hidden";
 getSelector(".output").style.visibility = "hidden";
 
-// ----------------------------------------------------------------------
-
-//* DOM EVENTS
 inputBtns.forEach((button) => {
   styleInputCurrency(button);
   showInput(button);
@@ -75,59 +57,45 @@ function styleInputCurrency(button) {
 }
 
 function selectCurrencies(this_currency) {
-  // set input currency
   inputCurrency = this_currency;
   getID("currencyInputName").innerHTML = `${inputCurrency}`;
 
-  // set output currencies
   outputCurrencies = allCurrencies.filter(function (element) {
     return element.name !== inputCurrency;
   });
 
-  // display output currencies
   const outputElements = [...getSelectors(".output__name")];
   outputElements.forEach(() => {
     for (let i = 0; i < outputElements.length; i++)
       outputElements[i].innerHTML = outputCurrencies[i].name;
   });
-  // reset all values
+
   outputs.forEach((value) => (value.innerHTML = 0));
   getID("currencyInputValue").value = null;
   return inputCurrency;
 }
 
-// show input section
 function showInput(button) {
   button.addEventListener("click", function (e) {
     getSelector(".input").style.visibility = "visible";
   });
 }
-// ----------------------------------------------------------------------
 
-//* CALCULATION
 let currentValue = getID("currencyInputValue");
 
 currentValue.addEventListener("input", function (currentValue) {
-  // show output section
   getSelector(".output").style.visibility = "visible";
 
-  // set rate for calculation
   const inputRate = allCurrencies.filter(function (element) {
     return element.name === inputCurrency;
   })[0].rate;
 
-  // set value for calculation
   currentValue = getID("currencyInputValue");
   let inputValue = currentValue.value;
 
-  //calculate
   function calculateConversion(rate, value, outputArray) {
     const base = 1;
     const convertedRates = [];
-    // log(`inputcurrency is ${inputCurrency}`);
-    // log(`inputrate is ${rate}`);
-    // log(`inputvalue is ${value}`);
-    // log(`outputcurrencies are ${outputArray}`);
 
     for (let currency of outputArray) {
       let calc = (base / rate) * value * currency.rate;
@@ -139,12 +107,12 @@ currentValue.addEventListener("input", function (currentValue) {
 
   calculateConversion(inputRate, inputValue, outputCurrencies);
 
-  // display output values
-  log(outputCurrencies)
+  log(outputCurrencies);
   outputs.forEach(() => {
     for (let i = 0; i < outputs.length; i++)
       outputs[i].innerHTML =
-        calculateConversion(inputRate, inputValue, outputCurrencies)[i] + " " +
+        calculateConversion(inputRate, inputValue, outputCurrencies)[i] +
+        " " +
         outputCurrencies[i].unit;
   });
 });

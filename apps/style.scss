@@ -7,7 +7,6 @@
   padding: 0;
 }
 
-
 /* M E D I A  Q U E R I E S */
 @mixin rwd($breakpoint) {
   @if $breakpoint==mq-m-p {
@@ -44,7 +43,7 @@ body {
 header {
   width: 100%;
   height: 100%;
-  
+
   h1 {
     font-size: 1.8rem;
     text-align: center;
@@ -96,7 +95,7 @@ main {
       place-items: center stretch;
       grid-gap: 1.5rem;
       margin: 0.8rem auto 0;
-      
+
       @include rwd(mq-m-p) {
         grid-template-columns: repeat(4, 1fr);
         margin: 2rem auto 0;
@@ -165,7 +164,7 @@ main {
     align-items: center;
     width: 75%;
     margin: 2rem auto 0;
-    
+
     @include rwd(mq-m-p) {
       margin: 4rem auto 0;
       font-size: 2rem;
@@ -240,7 +239,7 @@ main {
 
         @include rwd(mq-l) {
           flex-flow: column;
-          gap: .5rem;
+          gap: 0.5rem;
           justify-content: space-between;
           width: 32%;
           padding: 1rem 2rem;
@@ -249,8 +248,8 @@ main {
 
       .output__value {
         @include rwd(mq-l) {
-        font-size: 1.6rem;
-      }
+          font-size: 1.6rem;
+        }
       }
     }
   }
